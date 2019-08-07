@@ -1,6 +1,7 @@
 # Gilfoyle-bitcoin-alert : <small>Bitcoin is Really Volatile Today </small>
 ## Api : coinmarketcap <a href="https://coinmarketcap.com/api/documentation/v1/#">coinmarketcap</a>
-#### You can replace the api key in headers of source code with you own api key.. collect your api key from coinmarketcap 
+#### If program doesn't execute try replacing api key in headers of source code with you own api key 
+#### Api key can be collected from <a href="https://coinmarketcap.com/api/documentation/v1/#">coinmarketcap</a>
 <ul>
   <li> Fetches bitcoin price from the alerts.txt</li>
   <li>When the price is hit then program alerts and updates the file with latest bitcoin value<li>
