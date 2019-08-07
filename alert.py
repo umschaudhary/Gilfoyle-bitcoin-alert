@@ -3,7 +3,6 @@ import json
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import time
-import os
 from prettytable import PrettyTable
 from datetime import datetime, timedelta
 
