@@ -39,7 +39,10 @@ try:
     while True:
         portfolio_value = 0.00
         last_updated = 0
-        table = PrettyTable(['Asset', 'Previous Value', 'New Value','Last Updated'])
+        table = PrettyTable(
+            ['Asset', 'Previous Value', 'New Value', 'Last Updated'])
+        l_price = 0.0
+        l_symbol = ""
         with open('alerts.txt') as inp:
             for line in inp:
                 ticker, amount = line.split(",")
@@ -55,24 +58,26 @@ try:
                         float_amount = float(amount)
                         price_string = '{:,}'.format(round(price, 2))
                         amount_string = '{:,}'.format(round(float_amount, 2))
-                        with open('alerts.txt',"w+") as wr:
-                            wr.write(symbol +"," +str(price))
-                        if float(price) >= float(amount) :
+                        l_price = price
+                        l_symbol = symbol
+                        if float(price) >= float(amount):
                             print("New Price of {}".format(name))
                             print("Price is on NPR(Nepalese Currency)")
                             table.add_row([name + '(' + symbol + ')',
-                                   amount_string,
-                                   price_string,
-                                   last_updated
-                                 ])
+                                           amount_string,
+                                           price_string,
+                                           last_updated
+                                           ])
                             print(table)
                             print("This output is from the mp3 player")
                             file = 'alert.mp3'
                             os.system("mpg123 " + file)
+        with open('alerts.txt', "w+") as wr:
+            wr.write(l_symbol + "," + str(l_price))
         print("..............................")
         print('API refreshes every 5 minutes')
         print()
         time.sleep(300)
-                
+
 except (ConnectionError, Timeout, TooManyRedirects) as e:
     print(e)
