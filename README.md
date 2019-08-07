@@ -1,4 +1,5 @@
 # Gilfoyle-bitcoin-alert
+## Bitcoin is Really Volatile Today 
 ## Api : coinmarketcap <a href="https://coinmarketcap.com/api/documentation/v1/#">coinmarketcap</a>
 ### Fetches bitcoin price from the alerts.txt When the price is hit then program alerts and updates the file with latest bitcoin value
 <ul>
