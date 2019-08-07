@@ -2,10 +2,10 @@ import os
 import json
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-import datetime
 import time
 import os
 from prettytable import PrettyTable
+from datetime import datetime, timedelta
 
 
 url = ' https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
@@ -33,14 +33,13 @@ try:
     for currency in data:
         symbol = currency['symbol']
     print()
-    print("Alerts Tracking....")
+    print("....Fetching Data From coinmarketcap API .......")
     print()
 
     while True:
         portfolio_value = 0.00
         last_updated = 0
-        table = PrettyTable(
-            ['Asset', 'Previous Value', 'New Value', 'Last Updated'])
+        table = PrettyTable(['Asset', 'Previous Value', 'New Value','Last Updated'])
         l_price = 0.0
         l_symbol = ""
         with open('alerts.txt') as inp:
@@ -60,24 +59,32 @@ try:
                         amount_string = '{:,}'.format(round(float_amount, 2))
                         l_price = price
                         l_symbol = symbol
-                        if float(price) >= float(amount):
-                            print("New Price of {}".format(name))
+                        table.add_row([name + '(' + symbol + ')',
+                                    amount_string,
+                                    price_string,
+                                    last_updated
+                                    ])
+                        if float(price) >= float(amount) :
                             print("Price is on NPR(Nepalese Currency)")
-                            table.add_row([name + '(' + symbol + ')',
-                                           amount_string,
-                                           price_string,
-                                           last_updated
-                                           ])
                             print(table)
-                            print("This output is from the mp3 player")
+                            print()
                             file = 'alert.mp3'
                             os.system("mpg123 " + file)
-        with open('alerts.txt', "w+") as wr:
-            wr.write(l_symbol + "," + str(l_price))
-        print("..............................")
-        print('API refreshes every 5 minutes')
-        print()
-        time.sleep(300)
+                        else:
+                            print("No difference between previous and latest price")
+                            print(table)
+                        
 
+        with open('alerts.txt',"w+") as wr:
+            wr.write(l_symbol +"," +str(l_price))
+        print()
+        print("===============================")
+        print('API refreshes every 5 minutes')
+        now = datetime.now()
+        future = now + timedelta(minutes=5)
+        print("Next Update on {}".format(future.strftime("%H:%M:%S")) )
+        print("================================")
+        time.sleep(300)
+                
 except (ConnectionError, Timeout, TooManyRedirects) as e:
     print(e)
