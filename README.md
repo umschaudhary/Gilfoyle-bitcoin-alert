@@ -7,6 +7,11 @@ The output price is in Nepalese currency(NPR)
   </li>
   <li>Api changes every 5 minute</li>
   </ul>
+ 
+## Installation and Running code
+<p> pip install -r requirements.txt</p> 
+<p> python alerts.py </p>
+
   <img src="update.png" title="console output">
 
 
