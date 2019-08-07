@@ -42,7 +42,7 @@ try:
         table = PrettyTable(['Asset', 'Previous Value', 'New Value','Last Updated'])
         with open('alerts.txt') as inp:
             for line in inp:
-                ticker, amount = line.split()
+                ticker, amount = line.split(",")
                 ticker = ticker.upper()
                 for currency in data:
                     symbol = currency['symbol']
@@ -55,10 +55,9 @@ try:
                         float_amount = float(amount)
                         price_string = '{:,}'.format(round(price, 2))
                         amount_string = '{:,}'.format(round(float_amount, 2))
-
+                        with open('alerts.txt',"w+") as wr:
+                            wr.write(symbol +"," +str(price))
                         if float(price) >= float(amount) :
-                            with open('alerts.txt',"w") as inp:
-                                inp.write("{} {}".format(symbol, round(price,2)))
                             print("New Price of {}".format(name))
                             print("Price is on NPR(Nepalese Currency)")
                             table.add_row([name + '(' + symbol + ')',
