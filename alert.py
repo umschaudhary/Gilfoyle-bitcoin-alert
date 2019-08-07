@@ -37,6 +37,7 @@ try:
     print()
 
     already_hit_symbols = []
+
     
     while True:
         portfolio_value = 0.00
@@ -50,13 +51,12 @@ try:
                     symbol = currency['symbol']
                     if symbol == ticker:
                         rank = currency['cmc_rank']
-                        
                         name = currency['name']
                         last_updated = currency['last_updated']
                         quotes = currency['quote'][convert]
                         price = quotes['price']
-                        
-                        if float(price) >= float(amount) and symbol not in already_hit_symbols:
+
+                        if float(price) >= float(amount) :
                             print('Hit')
                             print()
                             print(name + 'hit ' + amount + " on " + last_updated)
@@ -64,8 +64,10 @@ try:
                             print("======================")
                             file = 'alert.mp3'
                             os.system("mpg123 " + file)
-                            
-                            
+
+                        with open('alerts.txt',"w") as inp:
+                            inp.write("{} {}".format(symbol, price))
+  
         print("..............................")
         time.sleep(300)
                 
