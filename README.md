@@ -4,7 +4,7 @@
 #### Api key can be collected from <a href="https://coinmarketcap.com/api/documentation/v1/#">coinmarketcap</a>
 <ul>
 
-  <li>When the previous price of a bitcoin is hit by the latest price the  program alerts playing Napalm Death mp3<li>
+  <li>When the previous price of a bitcoin is hit by the latest price the  program alerts playing Napalm Death mp3</li>
   <li>previous price is fetched from the alerts.txt file</li>
   <li>Latest price is fetched from the coinmarketcap api </li>
   <li>Default currency is in Nepalese Rupee (NPR) But it can be changed on the source code with (USD or whatever you like)</li>
