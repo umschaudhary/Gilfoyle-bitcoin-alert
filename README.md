@@ -1,3 +1,7 @@
+
+# Silicon Valley Bitcoin alert
+<img src="gilfoyle.jpg"  title="silicon valley bitcoin alert">
+<img src="update.png" title="console output">
 # Gilfoyle-bitcoin-alert : <small>Bitcoin is Really Volatile Today </small>
 ## Api : coinmarketcap <a href="https://coinmarketcap.com/api/documentation/v1/#">coinmarketcap</a>
 #### If program doesn't execute try replacing api key in headers of source code with you own api key 
@@ -15,11 +19,5 @@
 <p> pip install -r requirements.txt</p> 
 <p> python alerts.py </p>
 
-  <img src="update.png" title="console output">
+  
 
-
-
-
-<img src="gilfoyle.jpg"  title="silicon valley bitcoin alert">
-
-# Silicon Valley Bitcoin alert
