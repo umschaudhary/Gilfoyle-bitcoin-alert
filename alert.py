@@ -11,7 +11,7 @@ url = ' https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
 
 start = 1
 limit = 10
-convert = 'NPR'
+convert = 'USD'
 parameters = {
     'start': int(start),
     'limit': int(limit),
@@ -38,7 +38,8 @@ try:
     while True:
         portfolio_value = 0.00
         last_updated = 0
-        table = PrettyTable(['Asset', 'Previous Value', 'New Value','Last Updated'])
+        table = PrettyTable(
+            ['Asset', 'Previous Value', 'New Value', 'Last Updated'])
         l_price = 0.0
         l_symbol = ""
         with open('alerts.txt') as inp:
@@ -59,12 +60,12 @@ try:
                         l_price = price
                         l_symbol = symbol
                         table.add_row([name + '(' + symbol + ')',
-                                    amount_string,
-                                    price_string,
-                                    last_updated
-                                    ])
-                        if float(price) >= float(amount) :
-                            print("Price is on NPR(Nepalese Currency)")
+                                       amount_string,
+                                       price_string,
+                                       last_updated
+                                       ])
+                        if float(price) >= float(amount):
+                            print("Price is on USD")
                             print(table)
                             print()
                             file = 'alert.mp3'
@@ -72,18 +73,17 @@ try:
                         else:
                             print("No difference between previous and latest price")
                             print(table)
-                        
 
-        with open('alerts.txt',"w+") as wr:
-            wr.write(l_symbol +"," +str(l_price))
+        with open('alerts.txt', "w+") as wr:
+            wr.write(l_symbol + "," + str(l_price))
         print()
         print("===============================")
         print('API refreshes every 5 minutes')
         now = datetime.now()
         future = now + timedelta(minutes=5)
-        print("Next Update on {}".format(future.strftime("%H:%M:%S")) )
+        print("Next Update on {}".format(future.strftime("%H:%M:%S")))
         print("================================")
         time.sleep(300)
-                
+
 except (ConnectionError, Timeout, TooManyRedirects) as e:
     print(e)
