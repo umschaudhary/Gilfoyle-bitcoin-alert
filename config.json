@@ -1,0 +1,5 @@
+{
+	"URL": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
+	"CURRENCY" : "USD",
+	"API_KEY" : "277886d5-e8e1-4b33-8e5d-d50ba830acf0"
+}
